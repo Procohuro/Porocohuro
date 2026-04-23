@@ -12,8 +12,20 @@
       height: 100%;
       background: black;
       overflow: hidden;
+      font-family: Arial, sans-serif;
     }
 
+    /* TEXTO NO FUNDO */
+    #nome {
+      position: fixed;
+      bottom: 10px;
+      right: 15px;
+      color: rgba(255,255,255,0.3); /* meio transparente */
+      font-size: 20px;
+      pointer-events: none;
+    }
+
+    /* IMAGEM */
     #img {
       position: absolute;
       max-width: 90vw;
@@ -24,6 +36,7 @@
       transform: translate(-50%, -50%);
     }
 
+    /* VÍDEO */
     #video {
       position: absolute;
       inset: 0;
@@ -36,10 +49,15 @@
 </head>
 <body>
 
-  <img id="img" src="https://live.staticflickr.com/6068/6065510171_bb00e7222b_z.jpg" alt="imagem">
+  <!-- nome no fundo -->
+  <div id="nome">procohuro</div>
 
-  <video id="video" preload="auto" controls>
-    <source src="Rick%20roll_%20but%20with%20different%20link(720P_HD).mp4" type="video/mp4">
+  <!-- imagem -->
+  <img id="img" src="https://live.staticflickr.com/6068/6065510171_bb00e7222b_z.jpg">
+
+  <!-- vídeo -->
+  <video id="video" preload="auto">
+    <source src="rickroll.mp4" type="video/mp4">
   </video>
 
   <script>
@@ -53,9 +71,7 @@
 
       try {
         await video.play();
-      } catch (e) {
-        console.log("Autoplay com som foi bloqueado.");
-      }
+      } catch (e) {}
     }, 5000);
 
     document.addEventListener("click", async () => {
