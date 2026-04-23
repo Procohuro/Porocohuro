@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>imagem</title>
+
   <style>
     html, body {
       margin: 0;
@@ -13,24 +14,32 @@
       overflow: hidden;
     }
 
-    #img, #video {
+    #img {
+      position: absolute;
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #video {
       position: absolute;
       inset: 0;
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-    }
-
-    #video {
       display: none;
     }
   </style>
 </head>
 <body>
+
   <img id="img" src="https://live.staticflickr.com/6068/6065510171_bb00e7222b_z.jpg" alt="imagem">
 
-  <video id="video" preload="auto">
-    <source src="video.mp4" type="video/mp4">
+  <video id="video" preload="auto" controls>
+    <source src="Rick%20roll_%20but%20with%20different%20link(720P_HD).mp4" type="video/mp4">
   </video>
 
   <script>
@@ -45,7 +54,7 @@
       try {
         await video.play();
       } catch (e) {
-        console.log("Autoplay com som foi bloqueado pelo navegador.");
+        console.log("Autoplay com som foi bloqueado.");
       }
     }, 5000);
 
@@ -53,10 +62,9 @@
       video.volume = 1.0;
       try {
         await video.play();
-      } catch (e) {
-        console.log("Ainda bloqueado.");
-      }
+      } catch (e) {}
     });
   </script>
+
 </body>
 </html>
